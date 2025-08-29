@@ -1,0 +1,68 @@
+# Archivos compilados de Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+# Directorios de compilación
+build/
+target/
+out/
+bin/
+
+# Archivos de IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+
+# Archivos del sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+
+# Archivos de PlantUML (código fuente)
+docs/diagrams/code/plantuml.jar
+
+# Archivos de configuración local
+*.properties
+*.config
+.env
+.env.local
+
+# Archivos de backup
+*.bak
+*.backup
+*.orig
+
+# Archivos de documentación generada
+docs/generated/
+docs/api/
+
+# Archivos de pruebas
+test-results/
+coverage/
+
+# Archivos de dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
