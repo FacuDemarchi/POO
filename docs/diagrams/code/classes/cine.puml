@@ -1,0 +1,102 @@
+@startuml Cine
+!theme plain
+
+class Pelicula {
+    - titulo: String
+    - duracion: int
+    - rating: String
+    - genero: String
+    - idioma: Idioma
+}
+
+class Idioma {
+    - audio: String
+    - subt: String
+    - isSubt: boolean
+}
+
+class Sala {
+    - numero: int
+    - butacas: int
+    - isPremium: boolean
+    - is3D: boolean
+}
+
+class Funcion {
+    - pelicula: Pelicula
+    - sala: Sala
+    - horario: Date
+    - precioUnitario: double
+}
+
+class Cine {
+    - cartelera: Pelicula[]
+    - salas: Sala[]
+    - funciones: Funcion[]
+}
+
+class Cliente {
+    - id: int
+    - nombre: String
+    - email: String
+    - telefono: String
+    - fechaRegistro: Date
+}
+
+class Reserva {
+    - id: int
+    - cliente: Cliente
+    - funcion: Funcion
+    - cantidadEntradas: int
+    - fechaReserva: Date
+    - estado: String
+    - precioTotal: double
+}
+
+class Factura {
+    - id: int
+    - cliente: Cliente
+    - fechaEmision: Date
+    - subtotal: double
+    - impuestos: double
+    - total: double
+    - estado: String
+}
+
+class DetalleReserva {
+    - id: int
+    - factura: Factura
+    - reserva: Reserva
+    - descripcion: String
+    - cantidad: int
+    - subtotal: double
+}
+
+class Butaca {
+    - id: int
+    - numero: int
+    - fila: String
+    - columna: int
+    - sala: Sala
+    - estado: String
+}
+
+' Relaciones originales
+Pelicula ||--|| Idioma : "tiene"
+Funcion ||--|| Pelicula : "proyecta"
+Funcion ||--|| Sala : "se realiza en"
+Cine ||--o{ Pelicula : "contiene"
+Cine ||--o{ Sala : "tiene"
+Cine ||--o{ Funcion : "programa"
+
+' Relaciones nuevas
+Sala ||--o{ Butaca : "contiene"
+Sala ||--o{ Funcion : "alberga"
+Cliente ||--o{ Reserva : "realiza"
+Reserva }o--|| Funcion : "es para"
+Reserva ||--|| Factura : "genera"
+Factura ||--o{ DetalleReserva : "contiene"
+DetalleReserva }o--|| Reserva : "detalla"
+DetalleReserva }o--|| Butaca : "ocupa"
+
+@enduml
