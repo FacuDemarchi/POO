@@ -14,7 +14,7 @@ class Pelicula {
 
 class Sala {
     - numero: int
-    - cantButacas: List<int>
+    - cantButacas: int
     - salas: List<Sala>
 }
 
@@ -23,7 +23,7 @@ class Funcion {
     - sala: Sala
     - horario: Date
     - precioUnitario: double
-    - butacasOcupadas: List<boolean>
+    - butacas: List<boolean>
     - funciones: List<Funcion>
 }
 

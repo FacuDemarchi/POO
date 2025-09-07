@@ -9,15 +9,15 @@ public class Funcion {
     private Sala sala;
     private Date horario;
     private double precioUnitario;
-    private ArrayList<Boolean> butacasOcupadas;
+    private ArrayList<Boolean> butacas;
     private static ArrayList<Funcion> funciones = new ArrayList<>();
     
     public Funcion(Pelicula pelicula, Sala sala, Date horario, double precioUnitario) {
         this.pelicula = pelicula;
         this.sala = sala;
-        this.horario = horario;
+        this.horario = horario; 
         this.precioUnitario = precioUnitario;
-        this.butacasOcupadas = inicializarButacas(sala.getCantButacas().length);
+        this.butacas = inicializarButacas(sala.getCantButacas());
         addFuncion(this);
     }
     
@@ -43,16 +43,16 @@ public class Funcion {
     }
     
     public boolean reservarButaca(int numeroButaca) {
-        if (numeroButaca >= 0 && numeroButaca < butacasOcupadas.size() && !butacasOcupadas.get(numeroButaca)) {
-            butacasOcupadas.set(numeroButaca, true);
+        if (numeroButaca >= 0 && numeroButaca < butacas.size() && !butacas.get(numeroButaca)) {
+            butacas.set(numeroButaca, true);
             return true; // Reserva exitosa
         }
         return false; // Butaca ocupada o número inválido
     }
     
     public boolean liberarButaca(int numeroButaca) {
-        if (numeroButaca >= 0 && numeroButaca < butacasOcupadas.size() && butacasOcupadas.get(numeroButaca)) {
-            butacasOcupadas.set(numeroButaca, false);
+        if (numeroButaca >= 0 && numeroButaca < butacas.size() && butacas.get(numeroButaca)) {
+            butacas.set(numeroButaca, false);
             return true; // Liberación exitosa
         }
         return false; // Butaca ya libre o número inválido
@@ -60,7 +60,7 @@ public class Funcion {
     
     public int getButacasDisponibles() {
         int disponibles = 0;
-        for (Boolean ocupada : butacasOcupadas) {
+        for (Boolean ocupada : butacas) {
             if (!ocupada) {
                 disponibles++;
             }
@@ -70,8 +70,8 @@ public class Funcion {
     
     public ArrayList<Integer> getButacasDisponiblesLista() {
         ArrayList<Integer> butacasDisponibles = new ArrayList<>();
-        for (int i = 0; i < butacasOcupadas.size(); i++) {
-            if (!butacasOcupadas.get(i)) {
+        for (int i = 0; i < butacas.size(); i++) {
+            if (!butacas.get(i)) {
                 butacasDisponibles.add(i); // Agregar el número de butaca (índice)
             }
         }
@@ -111,11 +111,11 @@ public class Funcion {
         this.precioUnitario = precioUnitario;
     }
     
-    public ArrayList<Boolean> getButacasOcupadas() {
-        return butacasOcupadas;
+    public ArrayList<Boolean> getButacas() {
+        return butacas;
     }
     
-    public void setButacasOcupadas(ArrayList<Boolean> butacasOcupadas) {
-        this.butacasOcupadas = butacasOcupadas;
+    public void setButacas(ArrayList<Boolean> butacas) {
+        this.butacas = butacas;
     }
 }

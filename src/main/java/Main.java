@@ -191,7 +191,7 @@ public class Main {
         ArrayList<Sala> salas = Sala.getSalas();
         for (int i = 0; i < salas.size(); i++) {
             System.out.println((i + 1) + ". Sala " + salas.get(i).getNumero() + 
-                             " (" + salas.get(i).getCantButacas().length + " butacas)");
+                             " (" + salas.get(i).getCantButacas() + " butacas)");
         }
         
         System.out.print("Seleccione una sala (numero): ");
@@ -516,7 +516,7 @@ public class Main {
         
         System.out.println("\n--- SALAS ---");
         for (Sala sala : Sala.getSalas()) {
-            System.out.println("- Sala " + sala.getNumero() + " - " + sala.getCantButacas().length + " butacas");
+            System.out.println("- Sala " + sala.getNumero() + " - " + sala.getCantButacas() + " butacas");
         }
         
         System.out.println("\n--- FUNCIONES ---");

@@ -77,7 +77,7 @@ public class TestSistema {
         ArrayList<Sala> salas = Sala.getSalas();
         System.out.println("OK Salas creadas: " + salas.size());
         for (Sala s : salas) {
-            System.out.println("  - Sala " + s.getNumero() + " (" + s.getCantButacas().length + " butacas)");
+            System.out.println("  - Sala " + s.getNumero() + " (" + s.getCantButacas() + " butacas)");
         }
         
         // Verificar que se crearon los clientes
@@ -212,7 +212,7 @@ public class TestSistema {
         // Verificar butacas ocupadas vs disponibles
         ArrayList<Funcion> funciones = Funcion.getFunciones();
         for (Funcion f : funciones) {
-            int totalButacas = f.getSala().getCantButacas().length;
+            int totalButacas = f.getSala().getCantButacas();
             int disponibles = f.getButacasDisponibles();
             int ocupadas = totalButacas - disponibles;
             System.out.println("OK " + f.getPelicula().getTitulo() + ": " + ocupadas + " ocupadas, " + disponibles + " disponibles");
