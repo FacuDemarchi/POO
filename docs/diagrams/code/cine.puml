@@ -6,20 +6,16 @@ class Pelicula {
     - duracion: int
     - rating: String
     - genero: String
-    - idioma: Idioma
+    - idioma: String
+    - subtitulos: String
+    - peliculas: List<Pelicula>
 }
 
-class Idioma {
-    - audio: String
-    - subt: String
-    - isSubt: boolean
-}
 
 class Sala {
     - numero: int
-    - butacas: int
-    - isPremium: boolean
-    - is3D: boolean
+    - cantButacas: List<int>
+    - salas: List<Sala>
 }
 
 class Funcion {
@@ -27,12 +23,8 @@ class Funcion {
     - sala: Sala
     - horario: Date
     - precioUnitario: double
-}
-
-class Cine {
-    - cartelera: Pelicula[]
-    - salas: Sala[]
-    - funciones: Funcion[]
+    - butacasOcupadas: List<boolean>
+    - funciones: List<Funcion>
 }
 
 class Cliente {
@@ -41,6 +33,7 @@ class Cliente {
     - email: String
     - telefono: String
     - fechaRegistro: Date
+    - clientes: List<Cliente>
 }
 
 class Reserva {
@@ -51,6 +44,8 @@ class Reserva {
     - fechaReserva: Date
     - estado: String
     - precioTotal: double
+    - butacasReservadas: List<int>
+    - reservas: List<Reserva>
 }
 
 class Factura {
@@ -61,42 +56,19 @@ class Factura {
     - impuestos: double
     - total: double
     - estado: String
+    - facturas: List<Factura>
 }
 
-class DetalleReserva {
-    - id: int
-    - factura: Factura
-    - reserva: Reserva
-    - descripcion: String
-    - cantidad: int
-    - subtotal: double
-}
 
-class Butaca {
-    - id: int
-    - numero: int
-    - fila: String
-    - columna: int
-    - sala: Sala
-    - estado: String
-}
 
 ' Relaciones originales
-Pelicula ||--|| Idioma : "tiene"
 Funcion ||--|| Pelicula : "proyecta"
 Funcion ||--|| Sala : "se realiza en"
-Cine ||--o{ Pelicula : "contiene"
-Cine ||--o{ Sala : "tiene"
-Cine ||--o{ Funcion : "programa"
 
 ' Relaciones nuevas
-Sala ||--o{ Butaca : "contiene"
 Sala ||--o{ Funcion : "alberga"
 Cliente ||--o{ Reserva : "realiza"
 Reserva }o--|| Funcion : "es para"
 Reserva ||--|| Factura : "genera"
-Factura ||--o{ DetalleReserva : "contiene"
-DetalleReserva }o--|| Reserva : "detalla"
-DetalleReserva }o--|| Butaca : "ocupa"
 
 @enduml

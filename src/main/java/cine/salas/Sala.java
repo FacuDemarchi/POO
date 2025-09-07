@@ -1,47 +1,50 @@
 package cine.salas;
+import java.util.ArrayList;
 
 public class Sala {
     private int numero;
-    private Butaca[] butacas;
-    private boolean isPremium;
-    private boolean is3D;
+    private int[] cantButacas;
+    private static ArrayList<Sala> salas = new ArrayList<>();
     
-    public Sala(int numero, Butaca[] butacas, boolean isPremium, boolean is3D) {
+    public Sala(int numero, int cantButacas) {
         this.numero = numero;
-        this.butacas = butacas;
-        this.isPremium = isPremium;
-        this.is3D = is3D;
+        this.cantButacas = generateButacasList(cantButacas);
+        addSala(this); // Se auto-registra directamente
+    }
+
+    private int[] generateButacasList(int cantButacas) {
+        int[] butacas = new int[cantButacas];
+        for (int i = 0; i < cantButacas; i++) {
+            butacas[i] = i;
+        }
+        return butacas;
+    }
+
+    public static void addSala(Sala sala) {
+        salas.add(sala);
+    }
+    
+    public static ArrayList<Sala> getSalas() {
+        return salas;
+    }
+    
+    public static void eliminarSala(int numero) {
+        salas.removeIf(sala -> sala.getNumero() == numero);
     }
     
     public int getNumero() {
         return numero;
     }
     
-    public Butaca[] getButacas() {
-        return butacas;
-    }
-    
-    public void setButacas(Butaca[] butacas) {
-        this.butacas = butacas;
+    public int[] getCantButacas() {
+        return cantButacas;
     }
     
     public void setNumero(int numero) {
         this.numero = numero;
     }
     
-    public boolean isPremium() {
-        return isPremium;
-    }
-    
-    public void setPremium(boolean premium) {
-        isPremium = premium;
-    }
-    
-    public boolean is3D() {
-        return is3D;
-    }
-    
-    public void set3D(boolean is3D) {
-        this.is3D = is3D;
+    public void setCantButacas(int[] cantButacas) {
+        this.cantButacas = cantButacas;
     }
 }

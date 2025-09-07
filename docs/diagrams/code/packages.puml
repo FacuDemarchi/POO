@@ -1,18 +1,12 @@
 @startuml Packages
 !theme plain
 
-package "cine" {
-    class Cine
-}
-
 package "peliculas" {
     class Pelicula
-    class Idioma
 }
 
 package "salas" {
     class Sala
-    class Butaca
 }
 
 package "funciones" {
@@ -26,14 +20,12 @@ package "clientes" {
 
 package "facturacion" {
     class Factura
-    class DetalleReserva
 }
 
 ' Relaciones entre paquetes
-cine --> peliculas
-cine --> salas
-cine --> funciones
-cine --> clientes
-cine --> facturacion
+peliculas --> funciones
+salas --> funciones
+funciones --> clientes
+clientes --> facturacion
 
 @enduml
