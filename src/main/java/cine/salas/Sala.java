@@ -2,11 +2,11 @@ package cine.salas;
 
 public class Sala {
     private int numero;
-    private int butacas;
+    private Butaca[] butacas;
     private boolean isPremium;
     private boolean is3D;
     
-    public Sala(int numero, int butacas, boolean isPremium, boolean is3D) {
+    public Sala(int numero, Butaca[] butacas, boolean isPremium, boolean is3D) {
         this.numero = numero;
         this.butacas = butacas;
         this.isPremium = isPremium;
@@ -17,16 +17,16 @@ public class Sala {
         return numero;
     }
     
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-    
-    public int getButacas() {
+    public Butaca[] getButacas() {
         return butacas;
     }
     
-    public void setButacas(int butacas) {
+    public void setButacas(Butaca[] butacas) {
         this.butacas = butacas;
+    }
+    
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
     
     public boolean isPremium() {

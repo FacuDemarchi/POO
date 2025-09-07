@@ -4,13 +4,15 @@ public class Butaca {
     private int numero;
     private String fila;
     private int columna;
-    private boolean isOcupada;
+    private boolean isPremium;
+    private double precio;
 
-    public Butaca(int numero, String fila, int columna, boolean isOcupada) {
+    public Butaca(int numero, String fila, int columna, boolean isPremium, double precio) {
         this.numero = numero;
         this.fila = fila;
         this.columna = columna;
-        this.isOcupada = isOcupada;
+        this.isPremium = isPremium;
+        this.precio = precio;
     }
 
     public int getNumero() {
@@ -25,8 +27,8 @@ public class Butaca {
         return columna;
     }
 
-    public boolean isOcupada() {
-        return isOcupada;
+    public boolean isPremium() {
+        return isPremium;
     }
     
     public void setNumero(int numero) {
@@ -41,7 +43,7 @@ public class Butaca {
         this.columna = columna;
     }
 
-    public void setIsOcupada(boolean isOcupada) {
-        this.isOcupada = isOcupada;
+    public void setIsPremium(boolean isPremium) {
+        this.isPremium = isPremium;
     }
 }
