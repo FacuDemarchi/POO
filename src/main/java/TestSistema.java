@@ -96,8 +96,8 @@ public class TestSistema {
         Date horario1 = new Date(System.currentTimeMillis() + 3600000);
         Date horario2 = new Date(System.currentTimeMillis() + 7200000);
         
-        Funcion funcion1 = new Funcion(peliculas.get(0), salas.get(0), horario1, 15.0);
-        Funcion funcion2 = new Funcion(peliculas.get(1), salas.get(1), horario2, 18.0);
+        new Funcion(peliculas.get(0), salas.get(0), horario1, 15.0);
+        new Funcion(peliculas.get(1), salas.get(1), horario2, 18.0);
         
         ArrayList<Funcion> funciones = Funcion.getFunciones();
         System.out.println("OK Funciones creadas: " + funciones.size());
